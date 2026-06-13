@@ -18,6 +18,8 @@ canvas {
   left: 0;
   z-index: -1;
   pointer-events: none;
+  width: 100%;
+  height: 100%;
 }
 
 /* BACKGROUNDS & AMBIENCE */
@@ -36,8 +38,8 @@ canvas {
   top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 640px;
-  height: 630px;
+  width: min(640px, 90vw);
+  height: min(630px, 85vh);
   background: url('/polygon-bg.jpg') no-repeat center;
   background-size: cover;
   /* opacity: 0.55; */
@@ -47,7 +49,7 @@ canvas {
 
 .bg-text {
   position: absolute;
-  left: 50px;
+  left: clamp(20px, 5vw, 50px);
   top: 110vh;
   transform: translateY(-80%);
   width: 100%;
@@ -72,7 +74,7 @@ canvas {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 40px 60px;
+  padding: clamp(20px, 4vh, 40px) clamp(20px, 4vw, 60px);
   pointer-events: none;
   z-index: 10;
 }
@@ -84,18 +86,19 @@ canvas {
   align-items: flex-start;
   pointer-events: none;
   z-index: 10;
+  width: 100%;
 }
 
 .nav-left {
   display: flex;
   align-items: flex-start;
-  gap: 32px;
+  gap: clamp(16px, 3vw, 32px);
 }
 
 .logo-group {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: clamp(10px, 2vw, 20px);
 }
 
 .brand-monogram {
@@ -185,13 +188,13 @@ canvas {
 }
 
 .red-badge-text {
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   font-weight: 800;
   line-height: 1;
 }
 
 .nav-center {
-  font-size: 11px;
+  font-size: clamp(9px, 1vw, 11px);
   font-weight: 500;
   color: #666;
   letter-spacing: 2.5px;
@@ -232,9 +235,9 @@ canvas {
 
 .pill-btn {
   height: 26px;
-  padding: 0 24px;
+  padding: 0 clamp(12px, 2vw, 24px);
   border-radius: 13px;
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 13px);
   font-weight: 500;
 }
 
@@ -259,7 +262,8 @@ canvas {
 .hero-section {
   position: absolute;
   top: 15vh;
-  left: 60px;
+  left: clamp(20px, 4vw, 60px);
+  right: clamp(20px, 4vw, 60px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -267,11 +271,11 @@ canvas {
 }
 
 .hero-section h1 {
-  font-size: 75px;
+  font-size: clamp(34px, 7vw, 75px);
   line-height: 0.85;
   margin: 0;
   font-weight: 500;
-  letter-spacing: -3px;
+  letter-spacing: -0.04em;
   color: #fff;
 }
 
@@ -279,13 +283,14 @@ canvas {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .skills-sub {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 13px);
   line-height: 1.3;
   letter-spacing: 0;
   font-weight: 500;
@@ -304,8 +309,8 @@ canvas {
 /* SKILL HUB WIDGET */
 .skill-section {
   position: absolute;
-  top: 55vh;
-  left: 60px;
+  top: clamp(48vh, 52vh, 55vh);
+  left: clamp(20px, 4vw, 60px);
   pointer-events: auto;
 }
 
@@ -317,8 +322,8 @@ canvas {
 }
 
 .skill-card {
-  width: 300px;
-  height: 180px;
+  width: clamp(240px, 35vw, 300px);
+  height: clamp(140px, 22vh, 180px);
   background: rgba(18, 20, 24, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
@@ -347,10 +352,12 @@ canvas {
 /* BOTTOM RIGHT AREA */
 .bottom-right-area {
   position: absolute;
-  bottom: 40px;
-  right: 60px;
+  bottom: clamp(20px, 4vw, 40px);
+  right: clamp(20px, 4vw, 60px);
+  left: clamp(20px, 4vw, 60px);
   display: flex;
   align-items: flex-end;
+  justify-content: flex-end;
   gap: 20px;
   pointer-events: auto;
 }
@@ -365,22 +372,23 @@ canvas {
   display: flex;
   align-items: flex-end;
   gap: 16px;
+  max-width: 100%;
 }
 
 .chat-bubble {
-  width: 320px;
+  width: clamp(260px, 40vw, 320px);
   background: rgba(22, 24, 30, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 26px;
   border-bottom-right-radius: 6px;
-  padding: 18px 24px 16px;
+  padding: clamp(14px, 2vw, 18px) clamp(18px, 2.5vw, 24px) clamp(12px, 2vw, 16px);
   backdrop-filter: blur(20px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .chat-bubble p {
   margin: 0 0 16px 0;
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 13px);
   line-height: 1.6;
   color: #a4a5a8;
 }
@@ -412,6 +420,7 @@ canvas {
   flex-direction: column;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .avatar-box {
@@ -488,4 +497,55 @@ canvas {
   display: inline-block;
   opacity: inherit;
   transform: inherit;
+}
+
+/* RESPONSIVE LAYOUT OPTIMIZATIONS (Media Queries) */
+@media (max-width: 768px) {
+  .nav-center {
+    display: none; /* Hide decorative middle text on mobile to clear path for logo/actions */
+  }
+
+  .skills-line {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .skills-sub {
+    transform: translateY(4px);
+  }
+
+  .bottom-right-area {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .copyright-mark {
+    display: none; /* Hide deep background watermark on small touchscreens */
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-right .percentage {
+    display: none; /* Strip back non-essential strings on tight viewports */
+  }
+
+  .skill-section {
+    top: auto;
+    bottom: calc(clamp(20px, 4vw, 40px) + 140px); /* Stack dynamically above chat-wrapper bubble */
+  }
+
+  .bottom-right-area {
+    left: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .chat-wrapper {
+    width: 100%;
+  }
+
+  .chat-bubble {
+    width: 100%; /* Force chat UI full width on small interfaces */
+  }
 }
